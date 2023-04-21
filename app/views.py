@@ -4,7 +4,7 @@ from app.models import Movie
 
 # Create your views here.
 def home(request):
-    return render(request, 'csvapp/home.html')
+    return render(request, 'app/home.html')
 
 def csv_to_model(request):
     all_csv_data = pd.read_csv(r'movies.csv')
@@ -24,6 +24,6 @@ def csv_to_model(request):
 
             instance = Movie(title=Title, genres=Genres, character_name_and_cast=Character_name_and_cast, overview=Overview, release_date=Release_date, tagline=Tagline, vote_average=Vote_average, vote_count=Vote_count)
             instance.save()
-        return render(request, 'csvapp/home.html')
+        return render(request, 'app/home.html')
 
-    return render(request, 'csvapp/csv.html', {'data': all_csv_data})
+    return render(request, 'app/csv.html', {'data': all_csv_data})
